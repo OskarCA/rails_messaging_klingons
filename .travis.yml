@@ -12,14 +12,5 @@ services:
   - postgresql
 
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-
-test:
-  adapter: postgresql
-  database: travis_ci_test
-
-before_script:
-  - cp config/database.yml.travis config/database.yml
-
-addons:
-  postgresql: "9.4"¨
+  - "psql -c 'create database travis;' -U postgres"
+  - "bundle exec rake db:migrate"
